@@ -105,8 +105,8 @@ ssize_t meson_sm_get_max_bytes(void)
 }
 
 #define SM_CHIP_ID_LENGTH	119
-#define SM_CHIP_ID_OFFSET	4
-#define SM_CHIP_ID_SIZE		12
+#define SM_CHIP_ID_OFFSET	0
+#define SM_CHIP_ID_SIZE		20
 
 int meson_sm_get_serial(void *buffer, size_t size)
 {
@@ -115,7 +115,7 @@ int meson_sm_get_serial(void *buffer, size_t size)
 	meson_init_shmem();
 
 	regs.regs[0] = FN_CHIP_ID;
-	regs.regs[1] = 0;
+	regs.regs[1] = 2;
 	regs.regs[2] = 0;
 
 	smc_call(&regs);
